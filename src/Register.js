@@ -1,14 +1,14 @@
 import { useState } from "react/cjs/react.development";
 
 function Register() {
-  const [name, setName] = useState("");
+  const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit=()=> {
-    let item = { name, email, password };
+    let item = { nama, email, password };
     console.warn(item);
-    setName("");
+    setNama("");
     setEmail("");
     setPassword("");
   }
@@ -27,8 +27,8 @@ function Register() {
                 type="text"
                 className="form-control"
                 id="nama"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={nama}
+                onChange={(e) => setNama(e.target.value)}
               />
             </div>
 
