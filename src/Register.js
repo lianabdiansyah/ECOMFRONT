@@ -5,12 +5,22 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit=()=> {
+  const handleSubmit= async ()=> {
     let item = { nama, email, password };
-    console.warn(item);
+    let result = await fetch("http://localhost:8000/api/register", {
+      method: "POST",
+      body: JSON.stringify(item),
+      headers: {
+        "content-type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    result = await result.json();
+    console.warn("result", result);
     setNama("");
     setEmail("");
     setPassword("");
+   
   }
 
   return (
