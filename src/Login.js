@@ -5,7 +5,7 @@ function Login() {
     const history = useHistory();
     useEffect(() => {
       if (localStorage.getItem("user-info")) {
-        history.push("/add");
+        history.push("/addproducts");
       }
     },[]);
   return (

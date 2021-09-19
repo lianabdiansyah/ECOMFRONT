@@ -5,7 +5,7 @@ import Header from "./Header";
 function Register() {
   useEffect(() => {
     if (localStorage.getItem("user-info")) {
-      history.push("/add");
+      history.push("/addproducts");
     }
   },[])
   const [nama, setNama] = useState("");
