@@ -5,9 +5,9 @@ function Header() {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container">
-          <a className="navbar-brand" href="#">
+          <span className="navbar-brand">
             E-Commerce
-          </a>
+          </span>
           <button
             className="navbar-toggler"
             type="button"
@@ -21,18 +21,26 @@ function Header() {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <Link to="/login" className="nav-link">
-                Login
-              </Link>
-              <Link to="/register" className="nav-link">
-                Register
-              </Link>
+              {
+                localStorage.getItem("user-info") ?
+              <>
               <Link to="/addproducts" className="nav-link">
                 Add Products
               </Link>
               <Link to="/updateproducts" className="nav-link">
                 Update Products
               </Link>
+              </>
+              :
+              <>   
+              <Link to="/login" className="nav-link">
+                Login
+              </Link>
+              <Link to="/register" className="nav-link">
+                Register
+              </Link>
+              </>   
+              }
             </div>
           </div>
           <div className="d-flex">

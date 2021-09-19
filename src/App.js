@@ -1,4 +1,3 @@
-import Header from "./Header";
 import { BrowserRouter,Route } from 'react-router-dom';
 import Login from "./Login";
 import Register from "./Register";
@@ -9,7 +8,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-      <Header/>
+      {/* <Header/> */}
         <Route path="/register">
           <Register/>
       </Route>

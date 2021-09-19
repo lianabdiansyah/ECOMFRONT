@@ -1,9 +1,17 @@
-import { useState } from "react/cjs/react.development";
+import  React,{ useState, useEffect } from "react";
+import {useHistory} from 'react-router-dom'
+import Header from "./Header";
 
 function Register() {
+  useEffect(() => {
+    if (localStorage.getItem("user-info")) {
+      history.push("/add");
+    }
+  },[])
   const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   const handleSubmit= async ()=> {
     let item = { nama, email, password };
@@ -17,18 +25,22 @@ function Register() {
     });
     result = await result.json();
     console.warn("result", result);
+    localStorage.setItem("user-info", JSON.stringify(result));
     setNama("");
     setEmail("");
     setPassword("");
+    history.push("/add");
    
   }
 
   return (
-    <div className="container d-flex justify-content-center">
-      <div className="row">
-        <div className="col-md-12">
-          <h1 className="text-center">Halaman Register</h1>
-          
+    <>
+      <Header/>
+      <div className="container d-flex justify-content-center">
+        <div className="row">
+          <div className="col-md-12">
+            <h1 className="text-center">Halaman Register</h1>
+
             <div className="mb-3">
               <label htmlFor="nama" className="form-label">
                 Nama
@@ -68,16 +80,17 @@ function Register() {
               />
             </div>
 
-            <button onClick={handleSubmit}
+            <button
+              onClick={handleSubmit}
               type="submit"
               className="btn btn-primary"
             >
               Kirim
             </button>
-         
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 export default Register;

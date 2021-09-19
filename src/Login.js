@@ -1,8 +1,18 @@
+import Header from "./Header";
+import React, { useEffect } from "react";
+import {useHistory} from "react-router-dom";
 function Login() {
-    return (
-        <div>
-            <h1>Halaman Login</h1>
-        </div>
-    )
+    const history = useHistory();
+    useEffect(() => {
+      if (localStorage.getItem("user-info")) {
+        history.push("/add");
+      }
+    },[]);
+  return (
+      <div>
+          <Header />
+      <h1>Halaman Login</h1>
+    </div>
+  );
 }
-export default Login
+export default Login;
