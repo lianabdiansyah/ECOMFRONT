@@ -29,7 +29,7 @@ function Register() {
     setNama("");
     setEmail("");
     setPassword("");
-    history.push("/add");
+    history.push("/addproducts");
    
   }
 
