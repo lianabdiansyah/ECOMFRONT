@@ -4,9 +4,19 @@ import Header from "./Header";
 
 function Register() {
   useEffect(() => {
-    if (localStorage.getItem("user-info")) {
-      history.push("/addproducts");
-    }
+    // if (localStorage.getItem("user-info")) {
+    //   history.push("/addproducts");
+    // }
+
+    //  let local = JSON.parse(localStorage.getItem("user-info"))
+
+    // //  console.log(local.error);
+    //  if (local.error) {
+    //    history.push("/login");
+    //  } else {
+    //    history.push("/");
+    // }
+    
   },[])
   const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");

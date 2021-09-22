@@ -4,10 +4,15 @@ import { useHistory } from "react-router-dom";
 function Protected(props) {
     let Cmp = props.Cmp;
     let history = useHistory();
-     useEffect(() => {
-       if (!localStorage.getItem("user-info")) {
-         history.push("/login");
-       }
+  useEffect(() => {
+    let local = JSON.parse(localStorage.getItem("user-info"))
+    console.log(local.error);
+    if (local.error) {
+      history.push("/login");
+    }
+      //  if (!localStorage.getItem("user-info")) {
+      //    history.push("/login");
+      //  }
      }, []);
     return (
     <div>

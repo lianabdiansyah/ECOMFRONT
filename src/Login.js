@@ -7,9 +7,19 @@ function Login() {
   const [password, setPassword] = useState("");
   const history = useHistory();
   useEffect(() => {
-    if (localStorage.getItem("user-info")) {
-      history.push("/addproducts");
-    }
+    // if (result.id) {
+    //     history.push("/"); 
+    // }
+    // if (localStorage.getItem("user-info")) {
+    //   history.push("/");
+    // let hasil = JSON.parse(localStorage.getItem("user-info"));
+    // console.log(hasil);
+
+    // if (hasil.error) {
+    //   console.log("gagal")
+    // }
+    // }
+
   }, []);
   
   const handleLogin = async() => {
@@ -23,11 +33,18 @@ function Login() {
       },
     });
     result = await result.json();
-    console.warn("result", result);
-    localStorage.setItem("user-info", JSON.stringify(result));
-    setEmail("");
-    setPassword("");
-    history.push("/addproducts");
+    // console.warn("result", result);
+    localStorage.setItem("user-info", JSON.stringify(result))
+
+    console.log(result.error)
+    if (result.error) {
+      history.push('/login')
+    } else {
+      history.push("/");
+    }
+    // setEmail("");
+    // setPassword("");
+   
   }
   return (
     <div>

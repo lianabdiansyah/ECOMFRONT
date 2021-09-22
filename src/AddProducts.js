@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import Header from "./Header";
 
 function AddProducts() {
@@ -6,6 +7,8 @@ function AddProducts() {
   const [description, setDescription]= useState("")
   const [price, setPrice]= useState("")
   const [file, setFile] = useState("")
+
+  const history = useHistory();
 
   const handleAddProduct = async() => {
     console.log(name, description, price, file);
@@ -19,7 +22,9 @@ function AddProducts() {
       method: "POST",
       body: formData,
     });
-    alert("Porduk berhasil ditambahkan");
+    history.push('/');
+     alert("Porduk berhasil ditambahkan");
+    
   }
   
   return (
@@ -46,12 +51,13 @@ function AddProducts() {
               <label htmlFor="description" className="form-label">
                 Description
               </label>
-              <input
-                type="description"
+              <textarea
+                cols="50"
+                rows="5"
                 className="form-control"
                 id="description"
                 onChange={(e) => setDescription(e.target.value)}
-              />
+              ></textarea>
             </div>
 
             <div className="mb-3">
