@@ -33,6 +33,9 @@ function Header() {
                   <Link to="/updateproducts" className="nav-link">
                     Update Products
                   </Link>
+                  <Link to="/" className="nav-link">
+                    List Products
+                  </Link>
                 </>
               ) : null}
             </div>
