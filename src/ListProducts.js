@@ -5,11 +5,25 @@ import Header from "./Header";
 function ListProducts() {
   const [data, setData] = useState([]);
   useEffect(async () => {
+    getData();
+  }, []);
+  console.warn("result", data);
+
+  const handleHapus = async(id) => {
+    let result = await fetch("http://localhost:8000/api/deleteproduk/"+id, {
+      method: 'DELETE',
+    });
+    result = await result.json();
+    getData();
+    alert("berhasil menghapus produk");
+  }
+
+  async function getData() {
     let result = await fetch("http://localhost:8000/api/listproduk");
     result = await result.json();
     setData(result);
-  }, []);
-  console.warn("result", data);
+  }
+
   return (
     <div>
       <Header />
@@ -23,6 +37,7 @@ function ListProducts() {
               <td>Deskripsi</td>
               <td>Price</td>
               <td>Gambar</td>
+              <td>Aksi</td>
             </tr>
           </thead>
 
@@ -40,6 +55,7 @@ function ListProducts() {
                     alt="gambar"
                   />
                 </td>
+                <td><button className="btn btn-danger" onClick={()=>handleHapus(item.id)}>Hapus</button></td>
               </tr>
             </tbody>
           ))}
