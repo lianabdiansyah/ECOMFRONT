@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "./Header";
 
 function ListProducts() {
@@ -9,14 +10,18 @@ function ListProducts() {
   }, []);
   console.warn("result", data);
 
-  const handleHapus = async(id) => {
-    let result = await fetch("http://localhost:8000/api/deleteproduk/"+id, {
-      method: 'DELETE',
-    });
-    result = await result.json();
-    getData();
-    alert("berhasil menghapus produk");
-  }
+  const handleHapus = async (id) => {
+    if (window.confirm("Apakah Anda ingin menghapus produk "+id+"?")) {
+      let result = await fetch("http://localhost:8000/api/deleteproduk/" + id, {
+        method: "DELETE",
+      });
+      result = await result.json();
+      getData();
+      alert("berhasil menghapus produk");
+    } else {
+      getData();
+    }
+  };
 
   async function getData() {
     let result = await fetch("http://localhost:8000/api/listproduk");
@@ -41,9 +46,9 @@ function ListProducts() {
             </tr>
           </thead>
 
-          {data.map((item) => (
-            <tbody>
-              <tr key="">
+          {data.map((item, index) => (
+            <tbody key={index}>
+              <tr>
                 <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>{item.description}</td>
@@ -55,7 +60,17 @@ function ListProducts() {
                     alt="gambar"
                   />
                 </td>
-                <td><button className="btn btn-danger" onClick={()=>handleHapus(item.id)}>Hapus</button></td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => handleHapus(item.id)}
+                  >
+                    Hapus
+                  </button>
+                  <Link to={"editproducts/" + item.id}>
+                    <button className="btn btn-warning ms-2">Edit</button>
+                  </Link>
+                </td>
               </tr>
             </tbody>
           ))}

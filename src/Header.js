@@ -30,8 +30,8 @@ function Header() {
                 <Link to="/addproducts" className="nav-link">
                   Add Products
                 </Link>
-                <Link to="/updateproducts" className="nav-link">
-                  Update Products
+                <Link to="/editproducts" className="nav-link">
+                  Edit Products
                 </Link>
                 <Link to="/" className="nav-link">
                   List Products
