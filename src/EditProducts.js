@@ -38,7 +38,7 @@ function EditProducts(props) {
         body: formData,
       }
     );
-    // history.push("/");
+    history.push("/");
     alert("Produk berhasil diubah");
 
   }

@@ -33,6 +33,9 @@ function Header() {
                 <Link to="/editproducts" className="nav-link">
                   Edit Products
                 </Link>
+                <Link to="/searchproducts" className="nav-link">
+                  Search Products
+                </Link>
                 <Link to="/" className="nav-link">
                   List Products
                 </Link>
